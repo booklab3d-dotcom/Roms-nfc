@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            body, html {
+                margin: 0;
+                padding: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #000;
+                overflow: hidden;
+            }
+            #game {
+                width: 100vw !important;
+                height: 100vh !important;
+            }
+            #game iframe, #game canvas {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="width:100%;height:100%;">
+            <div id="game"></div>
+        </div>
+        <script>
+            EJS_player = "#game";
+            EJS_core = "snes";
+            EJS_multitap = true;
+            EJS_gameName = "Super Mario All-Stars";
+            EJS_color = "#e52521";
+            
+            EJS_startOnLoaded = false;
+            
+            EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+            
+            // Enlace CDN para Super Mario All-Stars
+            EJS_gameUrl = "https://cdn.jsdelivr.net/gh/booklab3d-dotcom/Roms-nfc@main/Super%20Mario%20All-Stars.smc";
+        </script>
+        <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+    </body>
+</html>

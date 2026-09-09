@@ -7,8 +7,8 @@
             body, html {
                 margin: 0;
                 padding: 0;
-                width: 100%;
-                height: 100%;
+                width: 100vw;
+                height: 100vh;
                 background-color: #000;
                 overflow: hidden;
             }
@@ -33,7 +33,7 @@
             
             EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
             
-            // Enlace CDN libre de CORS y codificado
+            // Usamos la URL RAW directa de GitHub para evitar el error de red de jsDelivr
             EJS_gameUrl = "https://raw.githubusercontent.com/booklab3d-dotcom/Roms-nfc/main/Super%20Mario%20Kart%20(E).smc";
         </script>
         <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>

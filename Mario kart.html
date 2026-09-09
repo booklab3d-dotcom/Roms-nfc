@@ -16,6 +16,10 @@
                 width: 100vw !important;
                 height: 100vh !important;
             }
+            #game iframe, #game canvas {
+                width: 100% !important;
+                height: 100% !important;
+            }
         </style>
     </head>
     <body>
@@ -33,8 +37,8 @@
             
             EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
             
-            // Usamos la URL RAW directa de GitHub para evitar el error de red de jsDelivr
-            EJS_gameUrl = "https://github.com/booklab3d-dotcom/Roms-nfc/raw/refs/heads/main/Super%20Mario%20Kart%20(E).smc";
+            // Enlace RAW directo que no da error con los paréntesis
+            EJS_gameUrl = "https://raw.githubusercontent.com/booklab3d-dotcom/Roms-nfc/main/Super%20Mario%20Kart%20(E).smc";
         </script>
         <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
     </body>

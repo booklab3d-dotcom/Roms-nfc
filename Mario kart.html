@@ -12,6 +12,10 @@
                 background-color: #000;
                 overflow: hidden;
             }
+            #game {
+                width: 100vw !important;
+                height: 100vh !important;
+            }
         </style>
     </head>
     <body>
@@ -22,15 +26,14 @@
             EJS_player = "#game";
             EJS_core = "snes";
             EJS_multitap = true;
-            EJS_gameName = "Mario Kart";
-            EJS_color = "#0064ff";
+            EJS_gameName = "Super Mario Kart";
+            EJS_color = "#e52521";
             
-            // Pausa la carga automática y muestra la pantalla con el botón de "Play"
             EJS_startOnLoaded = false;
             
             EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
             
-            // Enlace CDN ultra-estable con CORS para GitHub
+            // Enlace CDN libre de CORS y codificado
             EJS_gameUrl = "https://cdn.jsdelivr.net/gh/booklab3d-dotcom/Roms-nfc@main/Super%20Mario%20Kart%20%28E%29.smc";
         </script>
         <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>

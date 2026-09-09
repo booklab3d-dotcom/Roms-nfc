@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Super Mario Kart - Cartucho NFC</title>
+        <title>Killer Instinct - Cartucho NFC</title>
         <style>
             body, html {
                 margin: 0;
@@ -32,7 +32,7 @@
 
             /* Botón de Play estilo retro */
             .play-btn {
-                background-color: #e52521;
+                background-color: #0064ff;
                 color: #ffffff;
                 border: none;
                 padding: 18px 36px;
@@ -40,7 +40,7 @@
                 font-weight: bold;
                 border-radius: 50px;
                 cursor: pointer;
-                box-shadow: 0 4px 15px rgba(229, 37, 33, 0.4);
+                box-shadow: 0 4px 15px rgba(0, 100, 255, 0.4);
                 transition: transform 0.2s, background-color 0.2s;
                 letter-spacing: 1px;
                 -webkit-tap-highlight-color: transparent;
@@ -48,7 +48,7 @@
 
             .play-btn:active {
                 transform: scale(0.95);
-                background-color: #b31b18;
+                background-color: #0046b3;
             }
 
             .rotate-hint {
@@ -79,20 +79,20 @@
         </div>
 
         <script>
-            // Configuración aislada para Super Mario Kart
+            // Configuración aislada para esta ROM
             EJS_player = "#game";
             EJS_core = "snes";
             EJS_multitap = true;
-            EJS_gameName = "Super Mario Kart";
-            EJS_color = "#e52521";
+            EJS_gameName = "Killer Instinct";
+            EJS_color = "#0064ff";
             
             // Pausado hasta presionar Play
             EJS_startOnLoaded = false;
             
             EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
             
-            // Enlace con CDN directa a la ROM
-            EJS_gameUrl = "https://cdn.jsdelivr.net/gh/booklab3d-dotcom/Roms-nfc@main/Super%20Mario%20Kart%20%28E%29.smc";
+            // Enlace dedicado a la ROM
+            EJS_gameUrl = "https://booklab3d-dotcom.github.io/Roms-nfc/Mario%20kart.html";
 
             function iniciarJuego() {
                 // Ocultar overlay

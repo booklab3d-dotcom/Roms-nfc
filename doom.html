@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <title>Doom - Cartucho NFC</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body, html {
+                width: 100%;
+                height: 100%;
+                background-color: #000;
+                overflow: hidden;
+                font-family: system-ui, -apple-system, sans-serif;
+            }
+
+            /* Pantalla inicial centrada */
+            #start-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #000;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 99999;
+            }
+
+            /* Botón de Play */
+            .play-btn {
+                background-color: #b30000;
+                color: #ffffff;
+                border: none;
+                padding: 18px 36px;
+                font-size: 20px;
+                font-weight: bold;
+                border-radius: 50px;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(179, 0, 0, 0.6);
+                transition: transform 0.2s, background-color 0.2s;
+                letter-spacing: 1px;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .play-btn:active {
+                transform: scale(0.95);
+                background-color: #800000;
+            }
+
+            .rotate-hint {
+                color: #888;
+                font-size: 13px;
+                margin-top: 15px;
+            }
+
+            /* Emulador adaptado a pantalla completa */
+            #game {
+                width: 100vw !important;
+                height: 100vh !important;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            #game iframe, #game canvas {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain !important;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Overlay inicial -->
+        <div id="start-screen">
+            <button class="play-btn" id="playBtn">PLAY PARA JUGAR</button>
+            <p class="rotate-hint">📱 Para mejor experiencia, gira tu teléfono</p>
+        </div>
+
+        <!-- Contenedor del juego -->
+        <div id="game"></div>
+
+        <script>
+            EJS_player = "#game";
+            EJS_core = "snes";
+            EJS_multitap = true;
+            EJS_gameName = "Doom";
+            EJS_color = "#b30000";
+            EJS_startOnLoaded = false;
+            
+            EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+            
+            // Enlace directo CDN para la ROM Doom.smc
+            EJS_gameUrl = "https://cdn.jsdelivr.net/gh/booklab3d-dotcom/Roms-nfc@main/Doom.smc";
+
+            document.getElementById('playBtn').addEventListener('click', function() {
+                // Ocultar overlay
+                document.getElementById('start-screen').style.display = 'none';
+
+                // Activar pantalla completa
+                var elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen().catch(function(){});
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                }
+
+                // Iniciar emulador
+                if (window.EJS_emulator && typeof window.EJS_emulator.start === 'function') {
+                    window.EJS_emulator.start();
+                } else if (window.EJS_emulator && window.EJS_emulator.game && typeof window.EJS_emulator.game.start === 'function') {
+                    window.EJS_emulator.game.start();
+                }
+            });
+        </script>
+        <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+    </body>
+</html>

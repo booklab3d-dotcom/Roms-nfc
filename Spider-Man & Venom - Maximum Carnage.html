@@ -19,7 +19,7 @@
                 font-family: system-ui, -apple-system, sans-serif;
             }
 
-            /* Pantalla inicial ajustada más arriba */
+            /* Pantalla inicial alineada arriba */
             #start-screen {
                 position: fixed;
                 top: 0;
@@ -29,9 +29,9 @@
                 background-color: #000;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start; /* Alinea hacia arriba */
                 align-items: center;
-                padding-bottom: 80px; /* Eleva el contenido */
+                padding-top: 25vh; /* Ajusta la altura del botón (25% desde el borde superior) */
                 z-index: 99999;
             }
 

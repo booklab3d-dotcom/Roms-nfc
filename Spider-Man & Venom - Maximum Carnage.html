@@ -26,21 +26,14 @@
                 left: 0;
             }
 
-            /* Eleva el menú inicial y el botón nativo Start Game de EmulatorJS */
-            #game > div {
-                justify-content: flex-start !important;
-                padding-top: 20vh !important;
-            }
-
-            #game iframe, #game canvas {
+            /* Forzamos el ajuste de posición sobre la estructura interna de EmulatorJS */
+            #game div, #game iframe {
                 width: 100% !important;
                 height: 100% !important;
-                object-fit: contain !important;
             }
         </style>
     </head>
     <body>
-        <!-- Contenedor único del emulador sin overlays personalizados -->
         <div id="game"></div>
 
         <script>
@@ -50,13 +43,31 @@
             EJS_gameName = "Maximum Carnage";
             EJS_color = "#cb0000";
             
-            // Inicia en la pantalla predeterminada del emulador
             EJS_startOnLoaded = false;
             
             EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
-            
-            // Enlace a la ROM
             EJS_gameUrl = "https://cdn.jsdelivr.net/gh/booklab3d-dotcom/Roms-nfc@main/Carnage.smc";
+
+            // Inyección de script para reposicionar el botón Start Game cuando se renderice
+            window.addEventListener('load', function() {
+                var checkExist = setInterval(function() {
+                    var startBtn = document.querySelector('.ejs_start_button') || 
+                                   document.querySelector('#game button') || 
+                                   document.querySelector('button');
+                    
+                    if (startBtn) {
+                        var container = startBtn.parentElement;
+                        if (container) {
+                            container.style.display = 'flex';
+                            container.style.flexDirection = 'column';
+                            container.style.justifyContent = 'flex-start';
+                            container.style.paddingTop = '20vh';
+                        }
+                        startBtn.style.marginTop = '20vh';
+                        clearInterval(checkExist);
+                    }
+                }, 100);
+            });
         </script>
         <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
     </body>

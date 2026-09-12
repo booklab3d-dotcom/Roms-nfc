@@ -19,7 +19,7 @@
                 font-family: system-ui, -apple-system, sans-serif;
             }
 
-            /* Pantalla inicial centrada */
+            /* Pantalla inicial ajustada más arriba */
             #start-screen {
                 position: fixed;
                 top: 0;
@@ -31,6 +31,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                padding-bottom: 80px; /* Eleva el contenido */
                 z-index: 99999;
             }
 
@@ -97,7 +98,7 @@
             
             EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
             
-            // Enlace CDN apuntando al nuevo nombre limpio
+            // Enlace CDN apuntando a la ROM
             EJS_gameUrl = "https://cdn.jsdelivr.net/gh/booklab3d-dotcom/Roms-nfc@main/Carnage.smc";
 
             document.getElementById('playBtn').addEventListener('click', function() {

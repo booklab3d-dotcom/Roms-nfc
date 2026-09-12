@@ -16,54 +16,8 @@
                 height: 100%;
                 background-color: #000;
                 overflow: hidden;
-                font-family: system-ui, -apple-system, sans-serif;
             }
 
-            /* Overlay inicial sin interferir con el emulador */
-            #start-screen {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background-color: #000;
-                z-index: 99999;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            /* Botón ubicado alto (a 18vh del borde superior) */
-            .play-btn {
-                position: absolute;
-                top: 18vh;
-                background-color: #cb0000;
-                color: #ffffff;
-                border: none;
-                padding: 18px 36px;
-                font-size: 20px;
-                font-weight: bold;
-                border-radius: 50px;
-                cursor: pointer;
-                box-shadow: 0 4px 15px rgba(203, 0, 0, 0.6);
-                transition: transform 0.2s, background-color 0.2s;
-                letter-spacing: 1px;
-                -webkit-tap-highlight-color: transparent;
-            }
-
-            .play-btn:active {
-                transform: scale(0.95);
-                background-color: #990000;
-            }
-
-            .rotate-hint {
-                position: absolute;
-                top: calc(18vh + 70px);
-                color: #888;
-                font-size: 13px;
-            }
-
-            /* Contenedor exacto para el emulador */
             #game {
                 width: 100vw !important;
                 height: 100vh !important;
@@ -71,16 +25,22 @@
                 top: 0;
                 left: 0;
             }
+
+            /* Eleva el menú inicial y el botón nativo Start Game de EmulatorJS */
+            #game > div {
+                justify-content: flex-start !important;
+                padding-top: 20vh !important;
+            }
+
+            #game iframe, #game canvas {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain !important;
+            }
         </style>
     </head>
     <body>
-        <!-- Pantalla de inicio aislada -->
-        <div id="start-screen">
-            <button class="play-btn" id="playBtn">PLAY PARA JUGAR</button>
-            <p class="rotate-hint">📱 Para mejor experiencia, gira tu teléfono</p>
-        </div>
-
-        <!-- Emulador -->
+        <!-- Contenedor único del emulador sin overlays personalizados -->
         <div id="game"></div>
 
         <script>
@@ -90,31 +50,13 @@
             EJS_gameName = "Maximum Carnage";
             EJS_color = "#cb0000";
             
-            // Iniciar automáticamente una vez se presione el botón
+            // Inicia en la pantalla predeterminada del emulador
             EJS_startOnLoaded = false;
             
             EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+            
+            // Enlace a la ROM
             EJS_gameUrl = "https://cdn.jsdelivr.net/gh/booklab3d-dotcom/Roms-nfc@main/Carnage.smc";
-
-            document.getElementById('playBtn').addEventListener('click', function() {
-                // Ocultar la pantalla de inicio
-                document.getElementById('start-screen').style.display = 'none';
-
-                // Activar pantalla completa en el navegador del celular
-                var elem = document.documentElement;
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen().catch(function(){});
-                } else if (elem.webkitRequestFullscreen) {
-                    elem.webkitRequestFullscreen();
-                }
-
-                // Iniciar el emulador y habilitar los controles táctiles nativos
-                if (window.EJS_emulator && typeof window.EJS_emulator.start === 'function') {
-                    window.EJS_emulator.start();
-                } else if (window.EJS_emulator && window.EJS_emulator.game && typeof window.EJS_emulator.game.start === 'function') {
-                    window.EJS_emulator.game.start();
-                }
-            });
         </script>
         <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
     </body>
